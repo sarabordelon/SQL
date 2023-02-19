@@ -1,0 +1,28 @@
+--Create a clothing store database
+
+CREATE TABLE saras_store_items (id INTEGER PRIMARY KEY, item TEXT, color TEXT, price INTEGER, quantity INTEGER);
+
+INSERT INTO saras_store_items VALUES 
+(1, "shirt", "blue", 10, 5),
+(2, "shirt", "red", 10, 6),
+(3, "shirt", "green", 10, 10),
+(4, "shirt", "yellow", 10, 5),
+(5, "shirt", "rainbow", 15, 8),
+(6, "shorts", "blue_jeans", 30, 7),
+(7, "shorts", "black", 30, 9),
+(8, "shorts", "khaki", 30, 15),
+(9, "pants", "blue_jeans", 50, 3),
+(10, "pants", "black", 50, 5),
+(11, "pants", "khaki", 50, 17),
+(12, "headband", "purple", 5, 5),
+(13, "glasses", "brown", 15, 9),
+(14, "blouse", "white", 25, 4),
+(15, "blouse", "grey", 25, 6);
+
+--Display all items in database by ascending price
+
+SELECT item, color, price FROM saras_store_items ORDER BY price asc;
+
+--How many do I have of each type of item?
+
+SELECT item, SUM(quantity) FROM saras_store_items GROUP BY item ORDER BY SUM(quantity)asc;
