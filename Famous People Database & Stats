@@ -1,0 +1,98 @@
+CREATE TABLE famous_people (id INTEGER PRIMARY KEY,
+first_name TEXT,
+last_name TEXT,
+birthdate TEXT);
+
+INSERT INTO famous_people (first_name, last_name, birthdate)
+    VALUES ("jennifer", "aniston", "02-11-1969");
+INSERT INTO famous_people (first_name, last_name, birthdate)
+    VALUES ("brad", "pitt", "12-18-1963");
+INSERT INTO famous_people (first_name, last_name, birthdate)
+    VALUES ("angelina", "jolie", "06-04-1975");
+INSERT INTO famous_people (first_name, last_name, birthdate)
+    VALUES ("oprah", "winfrey", "01-29-1954");
+INSERT INTO famous_people (first_name, last_name, birthdate)
+    VALUES ("beyonce", "N/A", "09-04-1981");
+INSERT INTO famous_people (first_name, last_name, birthdate)
+    VALUES ("zach", "bryan", "04-02-1996");
+INSERT INTO famous_people (first_name, last_name, birthdate)
+    VALUES ("lady", "gaga", "03-28-1986");
+INSERT INTO famous_people (first_name, last_name, birthdate)
+    VALUES ("lebron", "james", "12-30-1984");
+INSERT INTO famous_people (first_name, last_name, birthdate)
+    VALUES ("cristiano", "renaldo", "02-05-1985");
+INSERT INTO famous_people (first_name, last_name, birthdate)
+    VALUES ("lionel", "messi", "06-24-1987");
+INSERT INTO famous_people (first_name, last_name, birthdate)
+    VALUES ("taylor", "swift", "12-13-1989");
+INSERT INTO famous_people (first_name, last_name, birthdate)
+    VALUES ("britney", "spears", "12-02-1981");
+INSERT INTO famous_people (first_name, last_name, birthdate)
+    VALUES ("jay-z", "N/A", "12-04-1969");
+INSERT INTO famous_people (first_name, last_name, birthdate)
+    VALUES ("jennifer", "lopez", "07-24-1969");
+INSERT INTO famous_people (first_name, last_name, birthdate)
+    VALUES ("ben", "affleck", "08-15-1972");
+
+CREATE TABLE occupations (id INTEGER PRIMARY KEY,
+    person_id INTEGER, role TEXT);
+
+INSERT INTO occupations (person_id, role)
+    VALUES (1, "actor");
+INSERT INTO occupations (person_id, role)
+    VALUES (2, "actor"); 
+INSERT INTO occupations (person_id, role)
+    VALUES (3, "actor");
+INSERT INTO occupations (person_id, role)
+    VALUES (4, "actor");
+INSERT INTO occupations (person_id, role)
+    VALUES (5, "music_artist");
+INSERT INTO occupations (person_id, role)
+    VALUES (6, "music_artist");
+INSERT INTO occupations (person_id, role)
+    VALUES (7, "music_artist");
+INSERT INTO occupations (person_id, role)
+    VALUES (8, "athlete");
+INSERT INTO occupations (person_id, role)
+    VALUES (9, "athlete");
+INSERT INTO occupations (person_id, role)
+    VALUES (10, "athlete");
+INSERT INTO occupations (person_id, role)
+    VALUES (11, "music_artist");
+INSERT INTO occupations (person_id, role)
+    VALUES (12, "music_artist");
+INSERT INTO occupations (person_id, role)
+    VALUES (13, "music_artist");
+INSERT INTO occupations (person_id, role)
+    VALUES (14, "actor");
+INSERT INTO occupations (person_id, role)
+    VALUES (14, "music_artist");
+INSERT INTO occupations (person_id, role)
+    VALUES (15, "actor");
+
+--Performed a simple inner join to connect famous people to their occupation.
+
+SELECT famous_people.first_name, famous_people.last_name, occupations.role FROM famous_people 
+JOIN occupations 
+ON famous_people.id=occupations.person_id;
+
+CREATE TABLE marriages (id INTEGER PRIMARY KEY,
+person_1 INTEGER,
+person_2 INTEGER);
+
+INSERT INTO marriages (person_1, person_2)
+    VALUES (1, 2);
+INSERT INTO marriages (person_1, person_2)
+    VALUES (3, 2);
+INSERT INTO marriages (person_1, person_2)
+    VALUES (5, 13);
+INSERT INTO marriages (person_1, person_2)
+    VALUES (14, 15);
+
+--Performed a multiple self join to connect famous people to other famous people they have married.
+
+SELECT a.first_name, a.last_name, b.first_name, b.Last_name FROM marriages 
+JOIN famous_people a 
+ON marriages.person_1=a.ID 
+JOIN famous_people b 
+ON marriages.person_2=b.ID;
